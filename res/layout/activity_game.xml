@@ -83,7 +83,7 @@
             </TableRow>
 
             <Button
-                android:id="@+id/buttonNewGame"
+                android:id="@+id/buttonGoToNewGameActivity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="71dp"
