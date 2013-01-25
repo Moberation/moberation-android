@@ -43,6 +43,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class layout {
         public static final int activity_game=0x7f030000;
+        public static final int activity_join_game=0x7f030001;
     }
     public static final class string {
         public static final int app_name=0x7f060000;
@@ -51,6 +52,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int start_button_joingame=0x7f060004;
         public static final int start_button_newgame=0x7f060003;
         public static final int start_text_credit=0x7f060005;
+        public static final int title_activity_join_game=0x7f060006;
     }
     public static final class style {
         /** 

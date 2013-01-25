@@ -7,5 +7,6 @@
     <string name="start_button_newgame">New game</string>
     <string name="start_button_joingame">Join game</string>
     <string name="start_text_credit">Charles Skorstad, Jaran Nilsen, Kenneth Ajer Lunde, Shahab Afsharipour</string>
+    <string name="title_activity_join_game">JoinGameActivity</string>
 
 </resources>
