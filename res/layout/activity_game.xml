@@ -59,7 +59,7 @@
                 android:text="@string/start_button_newgame" />
 
             <Button
-                android:id="@+id/buttonJoinGame"
+                android:id="@+id/buttonGoToJoinGame"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="21dp"

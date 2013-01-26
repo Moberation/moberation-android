@@ -1,69 +1,38 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@color/black"
-    android:layout_width="fill_parent"
+    android:id="@+id/joinGameLayout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/operation"
+    android:background="@color/black_overlay"
     android:measureAllChildren="true"
     android:scrollbars="horizontal"
-    tools:context=".JoinGameActivity"
-    tools:ignore="UselessParent" >
+    tools:context=".JoinGameActivity" >
 
-    <!--
-         The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc.
-    -->
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
 
-    <!--
-         This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows.
-    -->
+        <Spinner
+            android:id="@+id/spinnerSelectGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/generic_5px" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/operation"
-        android:fitsSystemWindows="true" >
+    </TableRow>
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
 
-            <TableRow
-                android:id="@+id/tableRow1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/buttonJoinGame"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/generic_5px"
+            android:text="@string/joingame_join" />
 
-            <TableRow
-                android:id="@+id/tableRow2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+    </TableRow>
 
-            <TableRow
-                android:id="@+id/tableRow3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TableRow
-                android:id="@+id/tableRow4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/buttonGoToGames"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="71dp"
-                android:text="@string/Go_To_My_Games" />
-
-            <Button
-                android:id="@+id/buttonroles"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="21dp"
-                android:text="@string/Different_roles" />
-        </TableLayout>
-    </FrameLayout>
-
-</FrameLayout>
+</TableLayout>
