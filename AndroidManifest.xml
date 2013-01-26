@@ -41,7 +41,7 @@
             android:label="@string/title_activity_surgeon" >
         </activity>
         <activity
-            android:name="com.moberation.android.Anestesi"
+            android:name="com.moberation.android.AnaestheticActivity"
             android:label="@string/title_activity_anestesi" >
         </activity>
     </application>
