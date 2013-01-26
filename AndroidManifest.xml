@@ -40,6 +40,10 @@
             android:name="com.moberation.android.SurgeonActivity"
             android:label="@string/title_activity_surgeon" >
         </activity>
+        <activity
+            android:name="com.moberation.android.Anestesi"
+            android:label="@string/title_activity_anestesi" >
+        </activity>
     </application>
 
 </manifest>
