@@ -1,79 +1,69 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
     android:background="@color/black_overlay"
+    android:padding="@dimen/generic_5px"
     tools:context=".StartNewGameActivity" >
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:padding="@dimen/generic_5px" >
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/generic_5px" >
 
-        <TableRow
-            android:id="@+id/tableRow1"
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/generic_5px"
-            android:layout_marginBottom="@dimen/generic_15px" >
+            android:text="@string/newgame_name" />
+    </TableRow>
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/newgame_header"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_14pt" />
-        </TableRow>
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/generic_5px" >
 
-        <TableRow
-            android:id="@+id/tableRow3"
+        <EditText
+            android:id="@+id/editNewGameName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/generic_5px" >
+            android:ems="10"
+            android:inputType="text" >
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/newgame_name" />
-        </TableRow>
+            <requestFocus />
+        </EditText>
+    </TableRow>
 
-        <TableRow
-            android:id="@+id/tableRow4"
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="@dimen/generic_5px"
+        android:paddingTop="@dimen/generic_15px" >
+
+        <Spinner
+            android:id="@+id/spinner1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/generic_5px" >
+            android:entries="@array/game_roles" />
 
-            <EditText
-                android:id="@+id/editNewGameName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text" >
+    </TableRow>
 
-                <requestFocus />
-            </EditText>
-        </TableRow>
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
 
-        <TableRow
-            android:id="@+id/tableRow2"
+        <Button
+            android:id="@+id/buttonStartNewGame"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/generic_5px"
-            android:paddingTop="@dimen/generic_15px" >
+            android:layout_height="fill_parent"
+            android:text="@string/newgame_startbutton" />
 
-            <Button
-                android:id="@+id/buttonStartNewGame"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:text="@string/newgame_startbutton" />
+    </TableRow>
 
-        </TableRow>
-
-    </TableLayout>
-
-</RelativeLayout>
+</TableLayout>
