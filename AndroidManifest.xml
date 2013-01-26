@@ -29,7 +29,11 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_join_game"
             android:theme="@style/FullscreenTheme" >
-        </activity>
+	</activity>
+        <activity
+            android:name="com.moberation.android.StartNewGameActivity"
+            android:label="@string/title_activity_start_new_game">
+	</activity>
     </application>
 
 </manifest>
