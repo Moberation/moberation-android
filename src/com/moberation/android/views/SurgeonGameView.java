@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -33,7 +34,11 @@ public class SurgeonGameView extends View implements OnTouchListener {
 
 	private Drawable background;
 
+	private Bitmap backgroundBitmap;
+
 	private Drawable scalpel;
+
+	private boolean drawScalpel = false;
 
 	public SurgeonGameView(final Context context) {
 		super(context);
@@ -44,10 +49,11 @@ public class SurgeonGameView extends View implements OnTouchListener {
 
 		background = this.getContext().getResources()
 				.getDrawable(R.drawable.surgeonbg);
+		backgroundBitmap = ((BitmapDrawable) background).getBitmap();
 		scalpel = this.getContext().getResources()
 				.getDrawable(R.drawable.scalpel);
 
-		paint.setColor(Color.MAGENTA);
+		paint.setColor(Color.rgb(178, 0, 0));
 		paint.setAntiAlias(false);
 
 		this.setBackgroundDrawable(background);
@@ -62,7 +68,7 @@ public class SurgeonGameView extends View implements OnTouchListener {
 			lastPoint = point;
 		}
 
-		if (lastPoint != null) {
+		if (lastPoint != null && drawScalpel) {
 			Bitmap bitmap = ((BitmapDrawable) scalpel).getBitmap();
 			canvas.drawBitmap(bitmap, lastPoint.getX(), lastPoint.getY(), paint);
 		}
@@ -70,10 +76,31 @@ public class SurgeonGameView extends View implements OnTouchListener {
 
 	@Override
 	public boolean onTouch(final View view, final MotionEvent event) {
+
+		if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+			drawScalpel = true;
+		} else if (event.getAction() == MotionEvent.ACTION_UP) {
+
+			drawScalpel = false;
+		}
+
+		int touchedColor = backgroundBitmap.getPixel((int) event.getX(),
+				(int) event.getY());
+
+		// Ensure player follows the path around the heart. Should he fail, end
+		// the game.
+		if (touchedColor != Color.rgb(191, 30, 45)) {
+
+			Log.d(TAG, "OUTSIDE!!!!");
+		}
+
 		Point point = new Point(event.getX(), event.getY());
 		cutPathPoints.add(point);
 		invalidate();
+
+		Log.d(TAG, point.toString());
+
 		return true;
 	}
-
 }

@@ -13,23 +13,34 @@ import android.widget.Button;
  * @see SystemUiHider
  */
 public class StartActivity extends Activity {
-    
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	@Override
+	protected void onCreate(final Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_game);
-        
-        Button buttonCreateGame = (Button)findViewById(R.id.buttonGoToNewGameActivity);
-        buttonCreateGame.setOnClickListener(new View.OnClickListener() {
-			
+		setContentView(R.layout.activity_game);
+
+		Button buttonCreateGame = (Button) findViewById(R.id.buttonGoToNewGameActivity);
+		buttonCreateGame.setOnClickListener(new View.OnClickListener() {
+
 			@Override
-			public void onClick(View v) {
-				Intent switchActivityIntent = new Intent(StartActivity.this, StartNewGameActivity.class);
+			public void onClick(final View v) {
+				Intent switchActivityIntent = new Intent(StartActivity.this,
+						StartNewGameActivity.class);
 				StartActivity.this.startActivity(switchActivityIntent);
 			}
 		});
-    }
-    
+
+		Button buttonJoinGame = (Button) findViewById(R.id.buttonGoToJoinGame);
+		buttonJoinGame.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(final View v) {
+				Intent switchActivityIntent = new Intent(StartActivity.this,
+						JoinGameActivity.class);
+				StartActivity.this.startActivity(switchActivityIntent);
+			}
+		});
+	}
+
 }
