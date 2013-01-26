@@ -45,6 +45,19 @@
         android:padding="@dimen/generic_5px"
         android:paddingTop="@dimen/generic_15px" >
 
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/newgame_chooserole" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
         <Spinner
             android:id="@+id/spinner1"
             android:layout_width="wrap_content"
@@ -54,7 +67,7 @@
     </TableRow>
 
     <TableRow
-        android:id="@+id/tableRow1"
+        android:id="@+id/tableRow5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
@@ -62,6 +75,7 @@
             android:id="@+id/buttonStartNewGame"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:enabled="false"
             android:text="@string/newgame_startbutton" />
 
     </TableRow>

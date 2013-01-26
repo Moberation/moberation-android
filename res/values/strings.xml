@@ -13,6 +13,7 @@
     <string name="title_activity_start_new_game">Start a new game</string>
     <string name="newgame_header">Start a new game</string>
     <string name="newgame_name">Give your game a name:</string>
+    <string name="newgame_chooserole">Choose the role you want to play:</string>
     <string name="newgame_startbutton">Start game!</string>
     <string-array name="game_roles">
         <item>Surgeon</item>
