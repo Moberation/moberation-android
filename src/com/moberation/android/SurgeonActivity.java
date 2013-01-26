@@ -1,51 +1,30 @@
 package com.moberation.android;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MotionEvent;
-import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+
+import com.moberation.android.views.SurgeonGameView;
 
 public class SurgeonActivity extends Activity {
 
 	private static final String TAG = SurgeonActivity.class.getSimpleName();
 
-	private View drawView;
-
-	private Canvas canvas;
-
-	private Bitmap bitmap;
+	private SurgeonGameView drawView;
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_surgeon);
 
-		Log.d(TAG, "Starting surgeon role...");
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		drawView = findViewById(R.id.viewDraw);
-
-		// reading screen size (for device Independence)
-		DisplayMetrics displaymetrics = new DisplayMetrics();
-		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-
-		bitmap = Bitmap.createBitmap(displaymetrics.widthPixels,
-				displaymetrics.heightPixels, Bitmap.Config.ARGB_8888);
-		canvas = new Canvas(bitmap);
-
-		// Paint paint = new Paint();
-		// paint.setColor(Color.BLACK);
-		// paint.setStrokeWidth(3.0f);
-		// canvas.drawCircle(200f, 200f, 50f, paint);
-
-		drawView.setBackgroundDrawable(new BitmapDrawable(bitmap));
+		drawView = new SurgeonGameView(this);
+		setContentView(drawView);
+		drawView.requestFocus();
 	}
 
 	@Override
@@ -55,32 +34,6 @@ public class SurgeonActivity extends Activity {
 
 		return true;
 
-	}
-
-	@Override
-	public boolean onTouchEvent(final MotionEvent event) {
-
-		switch (event.getAction()) {
-
-		case MotionEvent.ACTION_MOVE: {
-
-			Paint paint = new Paint();
-			paint.setColor(Color.BLACK);
-			paint.setAlpha(255);
-			paint.setStrokeWidth(3.0f);
-			drawView.setBackgroundResource(R.drawable.surgeonbg);
-			canvas.drawPoint(event.getX(), event.getY(), paint);
-			drawView.invalidate();
-
-			Log.d(TAG, "plotted path");
-
-			break;
-		}
-		default:
-			break;
-		}
-
-		return true;
 	}
 
 }
