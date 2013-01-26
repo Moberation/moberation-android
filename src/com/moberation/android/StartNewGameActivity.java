@@ -12,6 +12,7 @@ import org.apache.http.params.HttpParams;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
@@ -42,6 +43,20 @@ public class StartNewGameActivity extends Activity {
 			@Override
 			public void onClick(final View v) {
 
+				// startGameWithServer(gameName, roleSpinner, thisActivity, v);
+				startGameForTesting();
+			}
+
+			private void startGameForTesting() {
+
+				Intent switchActivityIntent = new Intent(
+						StartNewGameActivity.this, SurgeonActivity.class);
+				StartNewGameActivity.this.startActivity(switchActivityIntent);
+			}
+
+			private void startGameWithServer(final EditText gameName,
+					final Spinner roleSpinner, final Activity thisActivity,
+					final View v) {
 				v.setEnabled(false);
 
 				HttpParams httpParameters = new BasicHttpParams();

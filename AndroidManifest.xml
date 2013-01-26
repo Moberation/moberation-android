@@ -6,8 +6,9 @@
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="16" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -30,12 +31,15 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_join_game"
             android:theme="@style/FullscreenTheme" >
-	</activity>
+        </activity>
         <activity
             android:name="com.moberation.android.StartNewGameActivity"
-            android:label="@string/title_activity_start_new_game">
-	</activity>
+            android:label="@string/title_activity_start_new_game" >
+        </activity>
+        <activity
+            android:name="com.moberation.android.SurgeonActivity"
+            android:label="@string/title_activity_surgeon" >
+        </activity>
     </application>
 
-    
 </manifest>

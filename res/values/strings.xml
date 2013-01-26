@@ -18,11 +18,13 @@
     <string name="newgame_servererror_title">Failed to create game</string>
     <string name="ok">OK</string>
     <string name="newgame_servererror_text">Unable to communicate with server. Please make sure you are connected to the internet.</string>
+
     <string-array name="game_roles">
         <item>Surgeon</item>
         <item>Anesthesiologist</item>
         <item>Nurse</item>
     </string-array>
 
+    <string name="title_activity_surgeon">SurgeonActivity</string>
 
 </resources>
