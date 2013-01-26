@@ -16,7 +16,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -29,9 +28,9 @@ import com.moberation.android.utils.Point;
  * @author jaran
  * 
  */
-public class SurgeonGameView extends View implements OnTouchListener {
+public class AnaestheticGameView extends View implements OnTouchListener {
 
-	private static final String TAG = SurgeonGameView.class.getSimpleName();
+	private static final String TAG = AnaestheticGameView.class.getSimpleName();
 
 	private List<Point> cutPathPoints = new ArrayList<Point>();
 	private Paint paint = new Paint();
@@ -40,11 +39,7 @@ public class SurgeonGameView extends View implements OnTouchListener {
 
 	private Bitmap backgroundBitmap;
 
-	private Drawable scalpel;
-
-	private boolean drawScalpel = false;
-
-	public SurgeonGameView(final Context context) {
+	public AnaestheticGameView(final Context context) {
 		super(context);
 		setFocusable(true);
 		setFocusableInTouchMode(true);
@@ -52,10 +47,8 @@ public class SurgeonGameView extends View implements OnTouchListener {
 		this.setOnTouchListener(this);
 
 		background = this.getContext().getResources()
-				.getDrawable(R.drawable.surgeonbg);
+				.getDrawable(R.drawable.face);
 		backgroundBitmap = ((BitmapDrawable) background).getBitmap();
-		scalpel = this.getContext().getResources()
-				.getDrawable(R.drawable.scalpel);
 
 		paint.setColor(Color.rgb(178, 0, 0));
 		paint.setAntiAlias(false);
@@ -66,16 +59,6 @@ public class SurgeonGameView extends View implements OnTouchListener {
 	@Override
 	public void onDraw(final Canvas canvas) {
 
-		Point lastPoint = null;
-		for (Point point : cutPathPoints) {
-			canvas.drawCircle(point.getX(), point.getY(), 2, paint);
-			lastPoint = point;
-		}
-
-		if (lastPoint != null && drawScalpel) {
-			Bitmap bitmap = ((BitmapDrawable) scalpel).getBitmap();
-			canvas.drawBitmap(bitmap, lastPoint.getX(), lastPoint.getY(), paint);
-		}
 	}
 
 	@Override
@@ -83,18 +66,14 @@ public class SurgeonGameView extends View implements OnTouchListener {
 
 		if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
-			drawScalpel = true;
+			// TODO Increase levels
 		} else if (event.getAction() == MotionEvent.ACTION_UP) {
 
-			drawScalpel = false;
+			// TODO Reduce levels
 		}
 
-		int touchedColor = backgroundBitmap.getPixel((int) event.getX(),
-				(int) event.getY());
-
-		// Ensure player follows the path around the heart. Should he fail, end
-		// the game.
-		if (touchedColor != Color.rgb(0, 0, 0)) {
+		boolean killed = false;
+		if (killed) {
 
 			AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 			builder.setMessage(R.string.gameover_message).setTitle(
@@ -118,11 +97,7 @@ public class SurgeonGameView extends View implements OnTouchListener {
 
 		}
 
-		Point point = new Point(event.getX(), event.getY());
-		cutPathPoints.add(point);
 		invalidate();
-
-		Log.d(TAG, point.toString());
 
 		return true;
 	}

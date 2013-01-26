@@ -21,11 +21,12 @@ public class StartActivity extends Activity {
 		setContentView(R.layout.activity_game);
 
 		Button buttonCreateGame = (Button) findViewById(R.id.buttonGoToNewGameActivity);
+		final Activity thisActivity = this;
 		buttonCreateGame.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(final View v) {
-				Intent switchActivityIntent = new Intent(StartActivity.this,
+				Intent switchActivityIntent = new Intent(thisActivity,
 						StartNewGameActivity.class);
 				StartActivity.this.startActivity(switchActivityIntent);
 			}
@@ -36,7 +37,7 @@ public class StartActivity extends Activity {
 
 			@Override
 			public void onClick(final View v) {
-				Intent switchActivityIntent = new Intent(StartActivity.this,
+				Intent switchActivityIntent = new Intent(thisActivity,
 						JoinGameActivity.class);
 				StartActivity.this.startActivity(switchActivityIntent);
 			}

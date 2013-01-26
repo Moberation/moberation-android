@@ -49,8 +49,11 @@ public class StartNewGameActivity extends Activity {
 
 			private void startGameForTesting() {
 
+				Class<?> activity = roleSpinner.getSelectedItem().toString()
+						.equalsIgnoreCase("surgeon") ? SurgeonActivity.class
+						: AnaestheticActivity.class;
 				Intent switchActivityIntent = new Intent(
-						StartNewGameActivity.this, SurgeonActivity.class);
+						StartNewGameActivity.this, activity);
 				StartNewGameActivity.this.startActivity(switchActivityIntent);
 			}
 

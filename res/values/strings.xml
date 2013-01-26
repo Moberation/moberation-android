@@ -21,6 +21,8 @@
     <string name="Highscore">Highscore</string>
     <string name="joingame_selectgame">Select a game to join:</string>
     <string name="joingame_join">Join now!</string>
+    <string name="gameover">Game over!</string>
+    <string name="gameover_message">You killed the patient! Start a new game to try again.</string>
 
     <string-array name="game_roles">
         <item>Surgeon</item>
