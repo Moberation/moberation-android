@@ -14,6 +14,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -34,7 +35,12 @@ public class SurgeonGameView extends View implements OnTouchListener {
 	private static final String TAG = SurgeonGameView.class.getSimpleName();
 
 	private List<Point> cutPathPoints = new ArrayList<Point>();
+
+	private Point previousTouchPoint = null;
+
 	private Paint paint = new Paint();
+
+	private Paint steeringWheelPaint = new Paint();
 
 	private Drawable background;
 
@@ -42,7 +48,11 @@ public class SurgeonGameView extends View implements OnTouchListener {
 
 	private Drawable scalpel;
 
-	private boolean drawScalpel = false;
+	private boolean scalpelPlaced = false;
+
+	private Rect bounds = new Rect();
+
+	private int pathColor = Color.rgb(0, 0, 0);
 
 	public SurgeonGameView(final Context context) {
 		super(context);
@@ -60,11 +70,17 @@ public class SurgeonGameView extends View implements OnTouchListener {
 		paint.setColor(Color.rgb(178, 0, 0));
 		paint.setAntiAlias(false);
 
+		steeringWheelPaint.setColor(Color.BLUE);
+
+		this.setAlpha(1);
 		this.setBackgroundDrawable(background);
 	}
 
 	@Override
 	public void onDraw(final Canvas canvas) {
+
+		canvas.getClipBounds(bounds);
+		canvas.drawCircle(150f, bounds.bottom - 150f, 100f, steeringWheelPaint);
 
 		Point lastPoint = null;
 		for (Point point : cutPathPoints) {
@@ -72,7 +88,7 @@ public class SurgeonGameView extends View implements OnTouchListener {
 			lastPoint = point;
 		}
 
-		if (lastPoint != null && drawScalpel) {
+		if (lastPoint != null && scalpelPlaced) {
 			Bitmap bitmap = ((BitmapDrawable) scalpel).getBitmap();
 			canvas.drawBitmap(bitmap, lastPoint.getX(), lastPoint.getY(), paint);
 		}
@@ -81,20 +97,67 @@ public class SurgeonGameView extends View implements OnTouchListener {
 	@Override
 	public boolean onTouch(final View view, final MotionEvent event) {
 
-		if (event.getAction() == MotionEvent.ACTION_DOWN) {
+		if (!scalpelPlaced) {
 
-			drawScalpel = true;
-		} else if (event.getAction() == MotionEvent.ACTION_UP) {
+			previousTouchPoint = new Point(event.getX(), event.getY());
 
-			drawScalpel = false;
+			pathColor = backgroundBitmap.getPixel(
+					(int) previousTouchPoint.getX(),
+					(int) previousTouchPoint.getY());
+
+			cutPathPoints.add(previousTouchPoint);
+			scalpelPlaced = true;
+			view.invalidate();
+
+			return true;
 		}
 
-		int touchedColor = backgroundBitmap.getPixel((int) event.getX(),
-				(int) event.getY());
+		Log.d(TAG, "x=" + event.getX() + " y=" + event.getY());
+		float centerY = bounds.bottom - 150f;
+		float centerX = 150f;
+		float radius = 100f;
+
+		if ((event.getX() - centerX) * (event.getX() - centerX)
+				+ (event.getY() - centerY) * (event.getY() - centerY) > radius
+				* radius) {
+			Log.d(TAG, "Outside joystick");
+			return false;
+
+		}
+
+		float addX = 0;
+		float addY = 0;
+
+		if (event.getX() > centerX) {
+
+			addX += 1.0f * ((event.getX() - centerX) / radius);
+		} else {
+
+			addX -= 1.0f * ((centerX - event.getX()) / radius);
+		}
+
+		if (event.getY() < centerY) {
+
+			addY -= 1.0f * ((centerY - event.getY()) / radius);
+		} else {
+
+			addY += 1.0f * ((event.getY() - centerY) / radius);
+		}
+
+		previousTouchPoint = new Point(previousTouchPoint.getX() + addX,
+				previousTouchPoint.getY() + addY);
+
+		int touchedColor = backgroundBitmap.getPixel(
+				(int) previousTouchPoint.getX(),
+				(int) previousTouchPoint.getY());
 
 		// Ensure player follows the path around the heart. Should he fail, end
 		// the game.
-		if (touchedColor != Color.rgb(0, 0, 0)) {
+
+		Log.d(TAG, "touched color=" + touchedColor + ", path color="
+				+ pathColor);
+
+		if (touchedColor != pathColor) {
 
 			AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 			builder.setMessage(R.string.gameover_message).setTitle(
@@ -118,11 +181,10 @@ public class SurgeonGameView extends View implements OnTouchListener {
 
 		}
 
-		Point point = new Point(event.getX(), event.getY());
+		Point point = new Point(previousTouchPoint.getX(),
+				previousTouchPoint.getY());
 		cutPathPoints.add(point);
 		invalidate();
-
-		Log.d(TAG, point.toString());
 
 		return true;
 	}
