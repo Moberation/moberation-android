@@ -15,6 +15,9 @@
     <string name="newgame_name">Give your game a name:</string>
     <string name="newgame_chooserole">Choose the role you want to play:</string>
     <string name="newgame_startbutton">Start game!</string>
+    <string name="newgame_servererror_title">Failed to create game</string>
+    <string name="ok">OK</string>
+    <string name="newgame_servererror_text">Unable to communicate with server. Please make sure you are connected to the internet.</string>
     <string-array name="game_roles">
         <item>Surgeon</item>
         <item>Anesthesiologist</item>
