@@ -18,6 +18,9 @@
     <string name="newgame_servererror_title">Failed to create game</string>
     <string name="ok">OK</string>
     <string name="newgame_servererror_text">Unable to communicate with server. Please make sure you are connected to the internet.</string>
+    <string name="Highscore">Highscore</string>
+    <string name="Go_To_My_Games">Go To My Games</string>
+    <string name="Different_roles">Different Roles</string>
 
     <string-array name="game_roles">
         <item>Surgeon</item>
@@ -26,5 +29,6 @@
     </string-array>
 
     <string name="title_activity_surgeon">SurgeonActivity</string>
+    <string name="title_activity_anestesi">Anestesi</string>
 
 </resources>

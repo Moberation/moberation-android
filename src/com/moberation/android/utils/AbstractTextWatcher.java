@@ -6,6 +6,7 @@ package com.moberation.android.utils;
 import android.text.Editable;
 import android.text.TextWatcher;
 
+
 /**
  * Easily create anonymous instances of this method, override only the methods you need.
  * @author jaran
