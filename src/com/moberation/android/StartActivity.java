@@ -2,6 +2,7 @@ package com.moberation.android;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.wifi.p2p.WifiP2pManager.ActionListener;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -79,6 +80,20 @@ public class StartActivity extends Activity {
 			@Override
 			public void onNothingSelected(final AdapterView<?> arg0) {
 				buttonStartGame.setEnabled(false);
+
+
+				final Button buttonLeftSide = (Button) findViewById(R.id.button1);
+				buttonLeftSide.setEnabled(true);
+				
+				
+				
+				
+				
+				final Button buttonRightSide = (Button) findViewById(R.id.button2);
+				buttonRightSide.setEnabled(true);
+
+
+
 
 			}
 		});
