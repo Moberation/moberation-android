@@ -13,20 +13,21 @@
     <string name="gameover">Game over!</string>
     <string name="gameover_message">You killed the patient! Start a new game to try again.</string>
     <string name="button_exit">Exit game</string>
-    <string name="button_about">About</string>
+    <string name="button_about">About game</string>
     <string name="created_by">Created by:</string>
+    <string name="ggj13">A Global Game Jam 2013 submission</string>
     <string-array name="game_roles">
         <item>Surgeon</item>
         <item>Anesthesiologist</item>
     </string-array>
     <string name="left_gass_btn">Left</string>
     <string name="right_gass_btn">Right</string>
-    <string name="anaesthetic_%">anaesthetic gass %</string>
+    <string name="anaesthetic_pts">anaesthetic gass %</string>
 
     <string name="title_activity_surgeon">SurgeonActivity</string>
     <string name="title_activity_anestesi">Anestesi</string>
-    <string name="title_activity_game_over">GameOverActivity</string>
+    <string name="title_activity_game_over">Game over!</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_about">About Moberation</string>
 
 </resources>

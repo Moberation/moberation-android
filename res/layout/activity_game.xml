@@ -1,108 +1,66 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#0099cc"
+    android:background="@drawable/moberationbg"
     tools:context=".StartActivity" >
 
-    <!--
-         The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc.
-    -->
-
-    <!--
-         This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows.
-    -->
-
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_gravity="center"
-        android:background="@drawable/moberationbg"
-        android:fitsSystemWindows="true" >
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/black_overlay" >
 
-        <TableLayout
+        <Button
+            android:id="@+id/buttonAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="18dp"
+            android:text="@string/button_about" />
+
+        <Button
+            android:id="@+id/buttonExit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="22dp"
+            android:text="@string/button_exit" />
+
+        <TextView
+            android:id="@+id/textView1"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="@color/black_overlay" >
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/spinnerRole"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="62dp"
+            android:gravity="center_horizontal"
+            android:text="@string/label_choose_role"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
-            <TableRow
-                android:id="@+id/tableRow1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/generic_5px" >
+        <Button
+            android:id="@+id/startNewGame"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/button_startgame" />
 
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center"
-                    android:text="@string/label_choose_role"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
+        <Spinner
+            android:id="@+id/spinnerRole"
+            style="@style/spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/startNewGame"
+            android:layout_alignParentLeft="true"
+            android:entries="@array/game_roles"
+            android:textColor="@color/black" />
 
-            </TableRow>
+    </RelativeLayout>
 
-            <TableRow
-                android:id="@+id/tableRow2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <Spinner
-                    android:id="@+id/spinnerRole"
-                    style="@style/spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/game_roles"
-                    android:textColor="@color/black" />
-
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <Button
-                    android:id="@+id/startNewGame"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="71dp"
-                    android:text="@string/button_startgame" />
-
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <Button
-                    android:id="@+id/buttonExit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/button_exit" />
-
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <Button
-                    android:id="@+id/buttonAbout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/button_about" />
-
-            </TableRow>
-
-        </TableLayout>
-
-    </FrameLayout>
-
-</FrameLayout>
+</RelativeLayout>

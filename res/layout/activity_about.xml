@@ -33,4 +33,14 @@
         android:layout_centerHorizontal="true"
         android:text="@string/button_backtostart" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:text="@string/ggj13"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
 </RelativeLayout>
