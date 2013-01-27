@@ -16,6 +16,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -55,6 +56,8 @@ public class SurgeonGameView extends View implements OnTouchListener {
 
 	private boolean patientDead = false;
 
+	private MediaPlayer mediaPlayer;
+
 	public SurgeonGameView(final Context context) {
 		super(context);
 		setFocusable(true);
@@ -72,6 +75,8 @@ public class SurgeonGameView extends View implements OnTouchListener {
 		paint.setAntiAlias(false);
 
 		steeringWheelPaint.setColor(Color.BLUE);
+
+		mediaPlayer = MediaPlayer.create(context, R.raw.scream);
 
 		this.setAlpha(1);
 		this.setBackgroundDrawable(background);
@@ -171,6 +176,10 @@ public class SurgeonGameView extends View implements OnTouchListener {
 		if (touchedColor != pathColor) {
 
 			patientDead = true;
+
+			if (mediaPlayer != null) {
+				mediaPlayer.start();
+			}
 
 			Intent switchActivityIntent = new Intent(getContext(),
 					GameOverActivity.class);

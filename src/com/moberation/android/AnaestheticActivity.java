@@ -5,12 +5,9 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.moberation.android.views.AnaestheticGameView;
-
 public class AnaestheticActivity extends Activity {
 
 	private static final String TAG = AnaestheticActivity.class.getSimpleName();
-
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {

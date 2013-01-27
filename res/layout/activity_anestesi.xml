@@ -1,13 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="gassprosentage"
+    android:id="@+id/gassprosentage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/face"
     tools:context=".Anestesi" >
 
     <Button
-        android:id="leftgassbtn"
+        android:id="@+id/leftgassbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -15,7 +15,7 @@
         android:text="Button" />
 
     <Button
-        android:id="rightgassbtn"
+        android:id="@+id/rightgassbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
