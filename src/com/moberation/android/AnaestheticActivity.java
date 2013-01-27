@@ -11,7 +11,6 @@ public class AnaestheticActivity extends Activity {
 
 	private static final String TAG = AnaestheticActivity.class.getSimpleName();
 
-	private AnaestheticGameView drawView;
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
@@ -21,9 +20,6 @@ public class AnaestheticActivity extends Activity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		drawView = new AnaestheticGameView(this);
-		setContentView(drawView);
-		drawView.requestFocus();
 	}
 
 }
