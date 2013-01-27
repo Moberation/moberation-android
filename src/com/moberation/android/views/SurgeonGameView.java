@@ -80,6 +80,7 @@ public class SurgeonGameView extends View implements OnTouchListener {
 	public void onDraw(final Canvas canvas) {
 
 		canvas.getClipBounds(bounds);
+
 		canvas.drawCircle(150f, bounds.bottom - 150f, 100f, steeringWheelPaint);
 
 		Point lastPoint = null;
@@ -100,11 +101,6 @@ public class SurgeonGameView extends View implements OnTouchListener {
 		if (!scalpelPlaced) {
 
 			previousTouchPoint = new Point(event.getX(), event.getY());
-
-			pathColor = backgroundBitmap.getPixel(
-					(int) previousTouchPoint.getX(),
-					(int) previousTouchPoint.getY());
-
 			cutPathPoints.add(previousTouchPoint);
 			scalpelPlaced = true;
 			view.invalidate();
@@ -112,7 +108,6 @@ public class SurgeonGameView extends View implements OnTouchListener {
 			return true;
 		}
 
-		Log.d(TAG, "x=" + event.getX() + " y=" + event.getY());
 		float centerY = bounds.bottom - 150f;
 		float centerX = 150f;
 		float radius = 100f;
@@ -147,9 +142,19 @@ public class SurgeonGameView extends View implements OnTouchListener {
 		previousTouchPoint = new Point(previousTouchPoint.getX() + addX,
 				previousTouchPoint.getY() + addY);
 
-		int touchedColor = backgroundBitmap.getPixel(
-				(int) previousTouchPoint.getX(),
-				(int) previousTouchPoint.getY());
+		float xscale = (float) backgroundBitmap.getWidth()
+				/ (float) view.getWidth();
+		float yscale = (float) backgroundBitmap.getHeight()
+				/ (float) view.getHeight();
+		float scaledXForBitmap = previousTouchPoint.getX() * xscale;
+		float scaledYForBitmap = previousTouchPoint.getY() * yscale;
+
+		Log.d(TAG, "x=" + previousTouchPoint.getX() + " y="
+				+ previousTouchPoint.getY() + " (x)=" + scaledXForBitmap
+				+ ", (y)=" + scaledYForBitmap);
+
+		int touchedColor = backgroundBitmap.getPixel((int) scaledXForBitmap,
+				(int) scaledYForBitmap);
 
 		// Ensure player follows the path around the heart. Should he fail, end
 		// the game.
