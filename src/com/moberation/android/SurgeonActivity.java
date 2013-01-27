@@ -1,6 +1,8 @@
 package com.moberation.android;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.Window;
@@ -25,6 +27,21 @@ public class SurgeonActivity extends Activity {
 		drawView = new SurgeonGameView(this);
 		setContentView(drawView);
 		drawView.requestFocus();
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setCancelable(true);
+		builder.setTitle("Info");
+		builder.setMessage("Click anywhere on the black border to place the scalpel. Use the blue joystick to control it.");
+		builder.setInverseBackgroundForced(true);
+		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(final DialogInterface dialog, final int which) {
+				dialog.dismiss();
+			}
+		});
+		AlertDialog alert = builder.create();
+		alert.show();
+
 	}
 
 	@Override
