@@ -20,8 +20,8 @@
         <item>Surgeon</item>
         <item>Anesthesiologist</item>
     </string-array>
-    <string name="left_gass_btn">Left</string>
-    <string name="right_gass_btn">Right</string>
+    <string name="left_gass_btn">Reduce</string>
+    <string name="right_gass_btn">Increase</string>
     <string name="anaesthetic_pts">anaesthetic gass %</string>
 
     <string name="title_activity_surgeon">SurgeonActivity</string>
