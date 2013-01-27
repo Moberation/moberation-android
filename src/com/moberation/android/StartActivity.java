@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
+import android.widget.Spinner;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -20,28 +23,65 @@ public class StartActivity extends Activity {
 
 		setContentView(R.layout.activity_game);
 
-		Button buttonCreateGame = (Button) findViewById(R.id.buttonGoToNewGameActivity);
+		final Button buttonStartGame = (Button) findViewById(R.id.startNewGame);
+		buttonStartGame.setEnabled(false);
 		final Activity thisActivity = this;
-		buttonCreateGame.setOnClickListener(new View.OnClickListener() {
+		final Spinner gameType = (Spinner) findViewById(R.id.spinnerRole);
+
+		buttonStartGame.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(final View v) {
+
+				if (gameType.getSelectedItem().equals("Surgeon")) {
+					Intent switchActivityIntent = new Intent(thisActivity,
+							SurgeonActivity.class);
+					StartActivity.this.startActivity(switchActivityIntent);
+				} else {
+
+					Intent switchActivityIntent = new Intent(thisActivity,
+							AnaestheticActivity.class);
+					StartActivity.this.startActivity(switchActivityIntent);
+				}
+			}
+		});
+
+		Button buttonExit = (Button) findViewById(R.id.buttonExit);
+		buttonExit.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(final View v) {
+				thisActivity.finish();
+			}
+		});
+
+		Button buttonAbout = (Button) findViewById(R.id.buttonAbout);
+		buttonAbout.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(final View v) {
 				Intent switchActivityIntent = new Intent(thisActivity,
-						StartNewGameActivity.class);
+						AboutActivity.class);
 				StartActivity.this.startActivity(switchActivityIntent);
 			}
 		});
 
-		Button buttonJoinGame = (Button) findViewById(R.id.buttonGoToJoinGame);
-		buttonJoinGame.setOnClickListener(new View.OnClickListener() {
+		gameType.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
-			public void onClick(final View v) {
-				Intent switchActivityIntent = new Intent(thisActivity,
-						JoinGameActivity.class);
-				StartActivity.this.startActivity(switchActivityIntent);
+			public void onItemSelected(final AdapterView<?> arg0,
+					final View arg1, final int arg2, final long arg3) {
+
+				buttonStartGame.setEnabled(true);
+
+			}
+
+			@Override
+			public void onNothingSelected(final AdapterView<?> arg0) {
+				buttonStartGame.setEnabled(false);
+
 			}
 		});
+
 	}
-
 }

@@ -6,10 +6,7 @@ package com.moberation.android.views;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -21,7 +18,6 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 
 import com.moberation.android.R;
-import com.moberation.android.StartActivity;
 import com.moberation.android.utils.Point;
 
 /**
@@ -74,26 +70,6 @@ public class AnaestheticGameView extends View implements OnTouchListener {
 
 		boolean killed = false;
 		if (killed) {
-
-			AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-			builder.setMessage(R.string.gameover_message).setTitle(
-					R.string.gameover);
-			builder.setPositiveButton(R.string.ok,
-					new DialogInterface.OnClickListener() {
-
-						@Override
-						public void onClick(final DialogInterface dialog,
-								final int which) {
-
-							Intent switchActivityIntent = new Intent(
-									getContext(), StartActivity.class);
-							getContext().startActivity(switchActivityIntent);
-
-						}
-					});
-
-			AlertDialog dialog = builder.create();
-			dialog.show();
 
 		}
 
