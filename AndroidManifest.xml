@@ -27,20 +27,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.moberation.android.JoinGameActivity"
-            android:label="@string/title_activity_join_game" >
-        </activity>
-        <activity
-            android:name="com.moberation.android.StartNewGameActivity"
-            android:label="@string/title_activity_start_new_game" >
-        </activity>
-        <activity
             android:name="com.moberation.android.SurgeonActivity"
             android:label="@string/title_activity_surgeon" >
         </activity>
         <activity
             android:name="com.moberation.android.AnaestheticActivity"
             android:label="@string/title_activity_anestesi" >
+        </activity>
+        <activity
+            android:name="com.moberation.android.GameOverActivity"
+            android:label="@string/title_activity_game_over" >
+        </activity>
+        <activity
+            android:name="com.moberation.android.AboutActivity"
+            android:label="@string/title_activity_about" >
         </activity>
     </application>
 

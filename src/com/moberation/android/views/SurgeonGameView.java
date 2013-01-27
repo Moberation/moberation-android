@@ -6,9 +6,8 @@ package com.moberation.android.views;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.AlertDialog;
+import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -22,8 +21,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 
+import com.moberation.android.GameOverActivity;
 import com.moberation.android.R;
-import com.moberation.android.StartActivity;
 import com.moberation.android.utils.Point;
 
 /**
@@ -53,6 +52,8 @@ public class SurgeonGameView extends View implements OnTouchListener {
 	private Rect bounds = new Rect();
 
 	private int pathColor = Color.rgb(0, 0, 0);
+
+	private boolean patientDead = false;
 
 	public SurgeonGameView(final Context context) {
 		super(context);
@@ -97,6 +98,11 @@ public class SurgeonGameView extends View implements OnTouchListener {
 
 	@Override
 	public boolean onTouch(final View view, final MotionEvent event) {
+
+		if (patientDead) {
+
+			return false;
+		}
 
 		if (!scalpelPlaced) {
 
@@ -164,26 +170,13 @@ public class SurgeonGameView extends View implements OnTouchListener {
 
 		if (touchedColor != pathColor) {
 
-			AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-			builder.setMessage(R.string.gameover_message).setTitle(
-					R.string.gameover);
-			builder.setPositiveButton(R.string.ok,
-					new DialogInterface.OnClickListener() {
+			patientDead = true;
 
-						@Override
-						public void onClick(final DialogInterface dialog,
-								final int which) {
-
-							Intent switchActivityIntent = new Intent(
-									getContext(), StartActivity.class);
-							getContext().startActivity(switchActivityIntent);
-
-						}
-					});
-
-			AlertDialog dialog = builder.create();
-			dialog.show();
-
+			Intent switchActivityIntent = new Intent(getContext(),
+					GameOverActivity.class);
+			getContext().startActivity(switchActivityIntent);
+			((Activity) getContext()).finish();
+			return false;
 		}
 
 		Point point = new Point(previousTouchPoint.getX(),

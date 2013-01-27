@@ -1,7 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="#0099cc"
     tools:context=".StartActivity" >
 
@@ -17,63 +17,90 @@
     -->
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_gravity="center"
-        android:background="@drawable/operation"
+        android:background="@drawable/moberationbg"
         android:fitsSystemWindows="true" >
 
         <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/black_overlay" >
 
             <TableRow
                 android:id="@+id/tableRow1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/generic_5px" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center"
+                    android:text="@string/label_choose_role"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
             </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
+
+                <Spinner
+                    android:id="@+id/spinnerRole"
+                    style="@style/spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/game_roles"
+                    android:textColor="@color/black" />
+
             </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/startNewGame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="71dp"
+                    android:text="@string/button_startgame" />
+
             </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/buttonExit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_exit" />
+
             </TableRow>
 
-            <Button
-                android:id="@+id/buttonGoToNewGameActivity"
+            <TableRow
+                android:id="@+id/tableRow5"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="71dp"
-                android:text="@string/start_button_newgame" />
+                android:layout_height="wrap_content" >
 
-            <Button
-                android:id="@+id/buttonGoToJoinGame"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="21dp"
-                android:text="@string/start_button_joingame" />
+                <Button
+                    android:id="@+id/buttonAbout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_about" />
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:padding="@dimen/start_credit_padding"
-                android:text="@string/start_text_credit"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/black" />
+            </TableRow>
+
         </TableLayout>
 
     </FrameLayout>
